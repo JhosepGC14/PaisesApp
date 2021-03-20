@@ -1,0 +1,41 @@
+<h2>Por Pais</h2>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <form autocomplete="off" (ngSubmit)="buscar()">
+      <input type="text" name="termino" class="form-control" placeholder="Buscar país..." [(ngModel)]="termino">
+    </form>
+  </div>
+</div>
+<hr>
+<div class="alert alert-danger">
+  No se encontró información con el término ASDASD
+</div>
+
+<div class="row">
+  <div class="col">
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Bandera</th>
+          <th>Nombre</th>
+          <th>Población</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>bandera</td>
+          <td>nombre</td>
+          <td>12312321321</td>
+          <td>
+            <a href="/pais/cri">Ver más...</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
