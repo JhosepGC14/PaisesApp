@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 //components
 import { CapitalPageComponent } from './pages/capital-page/capital-page.component';
@@ -15,7 +16,7 @@ import { VerPaisPageComponent } from './pages/ver-pais-page/ver-pais-page.compon
     RegionPageComponent,
     VerPaisPageComponent,
   ],
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   exports: [
     CapitalPageComponent,
     PaisesPageComponent,

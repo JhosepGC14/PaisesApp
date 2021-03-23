@@ -9,11 +9,19 @@
   </div>
 </div>
 <hr>
-<div class="alert alert-danger">
-  No se encontró información con el término ASDASD
+
+
+<div *ngIf="loading" class="d-flex justify-content-center align-items-center m-4">
+  <div class="spinner-border text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
 </div>
 
-<div class="row">
+<div class="alert alert-danger" *ngIf="error">
+  No se encontró información con el término <strong>{{termino}}</strong>
+</div>
+
+<div *ngIf="paises.length > 0" class="row">
   <div class="col">
     <table class="table table-hover">
       <thead>
@@ -26,13 +34,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>bandera</td>
-          <td>nombre</td>
-          <td>12312321321</td>
+        <tr *ngFor="let pais of paises; let i = index">
+          <td>{{i + 1}}</td>
           <td>
-            <a href="/pais/cri">Ver más...</a>
+            <img [src]="pais.flag" alt="" class="imgPais rounded ">
+          </td>
+          <td>{{pais.name}}</td>
+          <td>{{pais.population | number}}1</td>
+          <td>
+            <a [routerLink]="['/pais/', pais.alpha2Code]">Ver más...</a>
           </td>
         </tr>
       </tbody>
