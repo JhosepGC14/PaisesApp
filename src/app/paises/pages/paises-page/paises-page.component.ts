@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PaisByName } from '../../interfaces/PaisesByName.interfaces';
+import { Country } from '../../interfaces/Country.interfaces';
 import { PaisService } from '../../services/pais.service';
 
 @Component({
@@ -7,21 +7,19 @@ import { PaisService } from '../../services/pais.service';
   templateUrl: './paises-page.component.html',
   styleUrls: ['./paises-page.component.css'],
 })
-export class PaisesPageComponent {
+export class PaisesPageComponent implements OnInit {
   //variables
   termino: string = '';
   error: boolean = false;
   loading: boolean = false;
-  paises: PaisByName[] = [];
+  paises: Country[] = [];
 
   //constructor
   constructor(private paisService: PaisService) {}
 
-  buscar() {
-    this.error = false;
-    this.paises = [];
+  ngOnInit() {
     this.loading = true;
-    this.paisService.searchCountry(this.termino).subscribe(
+    this.paisService.getAllCountries().subscribe(
       (paises) => {
         console.log(paises);
         this.paises = paises;
@@ -34,5 +32,31 @@ export class PaisesPageComponent {
         this.paises = [];
       }
     );
+  }
+
+  buscar(termino: string) {
+    this.error = false;
+    this.paises = [];
+    this.loading = true;
+    this.termino = termino;
+    this.paisService.searchCountry(termino).subscribe(
+      (paises) => {
+        console.log(paises);
+        this.paises = paises;
+        this.loading = false;
+      },
+      (err) => {
+        console.log(err);
+        this.error = true;
+        this.loading = false;
+        this.paises = [];
+      }
+    );
+  }
+
+  sugerencias(termino: string) {
+    this.error = false;
+
+    // TODO: hacer las sugerencias
   }
 }

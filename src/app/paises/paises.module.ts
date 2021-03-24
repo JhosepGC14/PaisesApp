@@ -8,6 +8,9 @@ import { CapitalPageComponent } from './pages/capital-page/capital-page.componen
 import { PaisesPageComponent } from './pages/paises-page/paises-page.component';
 import { RegionPageComponent } from './pages/region-page/region-page.component';
 import { VerPaisPageComponent } from './pages/ver-pais-page/ver-pais-page.component';
+import { PaisesTableComponent } from './components/paises-table/paises-table.component';
+import { InputSearchComponent } from './components/input-search/input-search.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +18,9 @@ import { VerPaisPageComponent } from './pages/ver-pais-page/ver-pais-page.compon
     PaisesPageComponent,
     RegionPageComponent,
     VerPaisPageComponent,
+    PaisesTableComponent,
+    InputSearchComponent,
+    LoadingComponent,
   ],
   imports: [CommonModule, FormsModule, RouterModule],
   exports: [

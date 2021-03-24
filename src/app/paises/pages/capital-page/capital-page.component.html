@@ -1,1 +1,24 @@
-<p>capital-page works!</p>
+<h2>Por Capital</h2>
+<hr>
+
+<div class="row">
+  <div class="col">
+    <app-input-search (onEnter)="buscar($event)" (onDebounce)="sugerencias($event)"
+      [placeHolder]="'Buscar por Capital'"></app-input-search>
+  </div>
+</div>
+<hr>
+
+
+<app-loading [loading]="loading"></app-loading>
+
+
+<div class="alert alert-danger" *ngIf="error">
+  No se encontró información con el término <strong>{{termino}}</strong>
+</div>
+
+<div *ngIf="paises.length > 0" class="row">
+  <div class="col">
+    <app-paises-table [paises]="paises"></app-paises-table>
+  </div>
+</div>

@@ -1,1 +1,7 @@
-<p>ver-pais-page works!</p>
+<app-loading [loading]="loading"></app-loading>
+
+<div *ngIf="pais" class="row">
+  <div class="col">
+    <h1>Se obtuvo la data de {{pais.name}}</h1>
+  </div>
+</div>
