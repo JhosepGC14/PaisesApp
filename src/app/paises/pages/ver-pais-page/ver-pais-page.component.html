@@ -1,7 +1,74 @@
 <app-loading [loading]="loading"></app-loading>
 
-<div *ngIf="pais" class="row">
-  <div class="col">
-    <h1>Se obtuvo la data de {{pais.name}}</h1>
+<div *ngIf="pais">
+  <div class="row">
+    <div class="col-12">
+      <h1>País: <small>{{ pais.name }}</small></h1>
+    </div>
   </div>
+  <div *ngIf="pais" class="row">
+    <div class="col-4">
+      <h3>Bandera</h3>
+      <img [src]="pais.flag" class="img-thumbnail" />
+    </div>
+    <div class="col">
+      <h3>Información</h3>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <strong>Población</strong> {{ pais.population | number }}
+        </li>
+        <li class="list-group-item">
+          <strong>Código numérico</strong> {{ pais.numericCode }}
+        </li>
+        <li class="list-group-item">
+          <strong>Código alpha3</strong> {{ pais.alpha3Code }}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Traducciones</h3>
+  <div class="row">
+    <div class="col">
+
+      <span class="badge bg-primary mr-1">{{ pais.translations.de }}</span>
+      <span class="badge bg-primary mr-1">{{ pais.translations.es }}</span>
+      <span class="badge bg-primary mr-1">{{ pais.translations.fr }}</span>
+      <span class="badge bg-primary mr-1">{{ pais.translations.ja }}</span>
+      <span class="badge bg-primary mr-1">{{ pais.translations.it }}</span>
+      <span class="badge bg-primary mr-1">{{ pais.translations.br }}</span>
+      <span class="badge bg-primary mr-1">{{ pais.translations.pt }}</span>
+      <span class="badge bg-primary mr-1">{{ pais.translations.nl }}</span>
+      <span class="badge bg-primary mr-1">{{ pais.translations.hr }}</span>
+      <span class="badge bg-primary mr-1">{{ pais.translations.fa }}</span>
+
+    </div>
+  </div>
+
 </div>
+
+
+<!-- OTRA FORMA CON NG-TEMPLATE
+
+<div *ngIf="!pais; elese divPais" class="loading">
+  cargando...
+</div>
+
+<ng-template #divPais>
+  <div class="row">
+    <div class="col">
+      <h1>Se obtuvo la data de {{pais.name}}</h1>
+    </div>
+  </div>
+</ng-template>
+
+-->
+
+<!-- 
+  PARA TRANSFORMAR UN OBJ A UN JSON E IMPRIMIR EN EL HTML 
+
+  <pre>
+  {{pais | json}} 
+  </pre>
+
+-->
