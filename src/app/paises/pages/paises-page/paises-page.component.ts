@@ -13,6 +13,8 @@ export class PaisesPageComponent implements OnInit {
   error: boolean = false;
   loading: boolean = false;
   paises: Country[] = [];
+  paiseSugerido: Country[] = [];
+  mostrarSugerencias: boolean = false;
 
   //constructor
   constructor(private paisService: PaisService) {}
@@ -56,7 +58,16 @@ export class PaisesPageComponent implements OnInit {
 
   sugerencias(termino: string) {
     this.error = false;
+    this.termino = termino;
+    this.mostrarSugerencias = true;
+    this.paisService.searchCountry(termino).subscribe(
+      (pais) => (this.paiseSugerido = pais.splice(0, 4)),
+      (err) => (this.paiseSugerido = [])
+    );
+  }
 
-    // TODO: hacer las sugerencias
+  buscarSugerido(termino: string) {
+    this.buscar(termino);
+    this.mostrarSugerencias = false;
   }
 }

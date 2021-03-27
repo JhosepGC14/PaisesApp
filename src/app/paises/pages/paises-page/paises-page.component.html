@@ -7,6 +7,20 @@
     </app-input-search>
   </div>
 </div>
+
+<ul *ngIf="mostrarSugerencias" class="list-group">
+  <li *ngFor="let sugerencia of paiseSugerido" class="list-group-item list-group-item-action">
+    <a class="nav-link" [routerLink]="['/pais', sugerencia.alpha2Code]">
+      {{sugerencia.name}}
+    </a>
+  </li>
+  <li class="list-group-item list-group-item-action" (click)="buscarSugerido(termino)">
+    <a class="nav-link">
+      Buscar por "{{termino}}"
+    </a>
+  </li>
+</ul>
+
 <hr>
 
 <app-loading [loading]="loading"></app-loading>

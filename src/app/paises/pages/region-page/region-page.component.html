@@ -1,1 +1,27 @@
-<p>region-page works!</p>
+<h3>Buscar por Región : <small>{{regionActive | titlecase}}</small></h3>
+
+<hr>
+
+<h5>Seleccione la region</h5>
+<hr>
+<div class="row">
+  <div class="col">
+
+    <!-- [class.btn-primary]="region === regionActive" -->
+
+    <!-- [ngClass]="{ 'btn-primary' : region === regionActive, btn-outline-primary': region !== regionActive
+    }" -->
+
+    <button *ngFor="let region of regiones" [class]="getClaseCss(region)" (click)="activateRegion(region)">
+      {{region | titlecase}}
+    </button>
+  </div>
+</div>
+
+<app-loading class="mt-5" [loading]="loading"></app-loading>
+
+<div class="row mt-5" *ngIf="paises.length > 0">
+  <div class="col">
+    <app-paises-table [paises]="paises"></app-paises-table>
+  </div>
+</div>
